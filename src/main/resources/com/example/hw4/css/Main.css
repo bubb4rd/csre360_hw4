@@ -1,0 +1,20 @@
+
+.text-xl {
+    -fx-font-size: 18px;
+}
+.h1 {
+    -fx-font-weight: bold;
+}
+.main-button {
+    -fx-background-color: mediumslateblue;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 15px;
+    -fx-cursor: hand;
+}
+.main-button:hover {
+    -fx-background-color: darkslateblue ;
+}
+.w-250px {
+    -fx-pref-width: 250px;
+}
