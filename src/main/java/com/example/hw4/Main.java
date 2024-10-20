@@ -55,6 +55,10 @@ public class Main extends Application {
             PatientView patientForm = new PatientView(sceneController);
             sceneController.switchScene(patientForm.getScene());
         });
+        ctButton.setOnAction(e -> {
+            CTScanTech scanTechForm = new CTScanTech(sceneController);
+            sceneController.switchScene(scanTechForm.getScene());
+        });
         stage.show();
     }
 
