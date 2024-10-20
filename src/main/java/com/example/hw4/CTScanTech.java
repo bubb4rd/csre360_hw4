@@ -4,6 +4,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -35,7 +36,7 @@ public class CTScanTech {
 
         VBox scoreData = new VBox(10);
         Label subtitleLabel = new Label("Vessel level Agatston CAC score");
-
+        subtitleLabel.getStyleClass().add("h1");
         HBox lmScoreHBox = new HBox(100);
         Label lmScoreLabel = new Label("LM:");
         TextField lmScoreInput = new TextField();
@@ -61,7 +62,11 @@ public class CTScanTech {
         TextField pdaScoreInput = new TextField();
         pdaScoreHBox.getChildren().addAll(pdaScoreLabel, pdaScoreInput);
 
-        scoreData.getChildren().addAll(subtitleLabel, lmScoreHBox, ladScoreHBox, lcxScoreHBox, rcaScoreHBox, pdaScoreHBox);
+        Button saveButton = new Button("Save");
+        saveButton.getStyleClass().add("main-button");
+        saveButton.getStyleClass().add("w-250px");
+
+        scoreData.getChildren().addAll(subtitleLabel, lmScoreHBox, ladScoreHBox, lcxScoreHBox, rcaScoreHBox, pdaScoreHBox, saveButton);
         pane.getChildren().addAll(patientHBox, cacScoreHBox, scoreData);
         patientHBox.setPadding(new Insets(25, 25, 25, 25));
         cacScoreHBox.setPadding(new Insets(25, 25, 25, 25));
@@ -91,6 +96,10 @@ public class CTScanTech {
                 }
                 cacScoreInput.setText(String.valueOf(totalScore));
             });
+        });
+
+        saveButton.setOnAction(e -> {
+
         });
         return scene;
     }

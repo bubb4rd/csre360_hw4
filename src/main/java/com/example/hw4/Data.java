@@ -89,4 +89,33 @@ public class Data {
         }
         return null;
     }
+    public static void savePatientScore(Patient patient) {
+        File db = new File("src/main/resources/com/example/hw4/data");
+        String fileName = patient.getId() + "_PatientInfo.txt";
+        File file = new File(db, fileName);
+
+        Map<String, Integer> healthMetrics = new HashMap<>();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            boolean testResults = false;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (line.isEmpty() || line.equals("----------")) {
+                    testResults = true;
+                    continue;
+                }
+                if (testResults) {
+                    // Parse health metrics
+                    String[] parts = line.split(":");
+                    if (parts.length == 2) {
+                        healthMetrics.put(parts[0].trim(), Integer.parseInt(parts[1].trim()));
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        patientInfo.putAll(healthMetrics.entrySet().stream().collect(HashMap::new, (m, v) -> m.put(v.getKey(), v.getValue().toString()), HashMap::putAll));
+    }
 }

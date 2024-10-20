@@ -113,7 +113,8 @@ public class Patient {
                 "Email: " + email + "\n" +
                 "Phone: " + phone + "\n" +
                 "HealthHistory: " + healthHistory + "\n" +
-                "InsuranceID: " + insuranceID;
+                "InsuranceID: " + insuranceID + "\n" +
+                "----------";
 
         try (FileWriter writer = new FileWriter(file)) {
             writer.write(patientInfo);
